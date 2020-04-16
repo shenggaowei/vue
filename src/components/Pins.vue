@@ -1,17 +1,27 @@
 <template>
-  <div class="pins-container">
-    <a class="tag" target="_blank" href="http://www.17sucai.com/">item1</a>
-    <a class="tag" target="_blank" href="http://www.17sucai.com/">item2</a>
+  <div class="tagBall">
+    <a v-for="(item, index) in pinsData" :key="index" :href="item.url" class="tag">
+      {{item.text}}
+    </a>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Pin from './pin';
+import datas from './mock';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: 'Pins',
+  data(){
+    return {
+      pinsData: []
+    }
+  },
+  created(){
+    this.pinsData = datas
+  },
+  mounted(){
+    const instance = new Pin();
+    instance.init();
   }
 }
 </script>
