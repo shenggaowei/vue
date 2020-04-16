@@ -7,6 +7,13 @@
 </template>
 
 <script>
+import parseXlsx from 'excel';
+import path from 'path'
+const pathName = path.join(__dirname, 'components/test.xlsx');
+parseXlsx(pathName).then((data) => {
+  console.log(data)
+});
+
 import Pin from './pin';
 import datas from './mock';
 export default {
